@@ -73,7 +73,7 @@ jobs:
         id: build-and-push-modoboa
         uses: docker/build-push-action@0565240e2d4ab88bba5387d719585280857ece09 # v5.0.0
         with:
-          context: docker/Dockerfile.dev
+          context: ./docker/Dockerfile.dev
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
@@ -84,7 +84,7 @@ jobs:
         id: build-and-push-front
         uses: docker/build-push-action@0565240e2d4ab88bba5387d719585280857ece09 # v5.0.0
         with:
-          context: docker/Dockerfile.front.dev
+          context: ./docker/Dockerfile.front.dev
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
@@ -93,7 +93,7 @@ jobs:
 
       - name: Build and push Docker image
         id: build-and-push-radicale
-        uses: docker/build-push-action@0565240e2d4ab88bba5387d719585280857ece09 # v5.0.0
+        uses: ./docker/build-push-action@0565240e2d4ab88bba5387d719585280857ece09 # v5.0.0
         with:
           context: docker/Dockerfile.radicale.dev
           push: ${{ github.event_name != 'pull_request' }}
